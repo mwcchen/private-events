@@ -1,6 +1,6 @@
 <%= session[:current_user_id] %>
 <ul>
-  <% Event.where(creator_id: session[:current_user_id]).each do |event| %>
+  <% Event.all.each do |event| %>
     <li>
       <%= event.description %>
     </li>

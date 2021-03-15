@@ -1,0 +1,5 @@
+<%= form_with model: @event do |form| %>
+  <%= form.label(:description, "Description:") %>
+  <%= form.text_field :description %><br><br>
+  <%= form.submit("Submit") %>
+<% end %>
