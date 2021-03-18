@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(session[:current_user_id])
   end
 
   def require_login

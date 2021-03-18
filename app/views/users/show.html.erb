@@ -1,9 +1,18 @@
-<%= session[:current_user_id] %>
+<%= session[:current_user_id] %><br>
+created events
 <ul>
   <% Event.where(creator_id: session[:current_user_id]).each do |event| %>
     <li>
-      <%= event.description %>
+      <%= link_to event.description , event_path(event) %>
     </li>
   <% end %>
 </ul>
-<a href="../events/new">new event</a>
+attending events
+<ul>
+  <% @user.attended_events.each do |event| %>
+    <li>
+      <%= link_to event.description , event_path(event) %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "event index", events_path %>

@@ -2,8 +2,8 @@
 <ul>
   <% Event.all.each do |event| %>
     <li>
-      <%= event.description %>
+      <%= link_to event.description , event_path(event) %>
     </li>
   <% end %>
 </ul>
-<a href="../events/new">new event</a>
+<%= link_to "new event", new_event_path %>

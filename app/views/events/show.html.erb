@@ -2,5 +2,9 @@
 <%= @event.id %><br>
 <%= @event.description %><br>
 <%= @event.creator.name %><br>
+<% @event.attendees do |attendee| %>
+  <%= attendee %>
+<% end %>
 
-<a href="../events">event index</a>
+<%= button_to "attend event", attendances_path(event: @event) %>
+<%= link_to "event index", events_path %>
