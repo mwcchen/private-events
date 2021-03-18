@@ -1,18 +1,38 @@
-<%= session[:current_user_id] %><br>
-created events
+<br>Current session using UID:
+<%= link_to session[:current_user_id], user_path(session[:current_user_id]) %>
+<%= link_to "Log out", session_path(session[:current_user_id]), method: "delete"%>
+<br><br>
+
+Created events:
 <ul>
-  <% Event.where(creator_id: session[:current_user_id]).each do |event| %>
+  <% @user.created_events.each do |event| %>
     <li>
-      <%= link_to event.description , event_path(event) %>
+      <%= link_to event.description, event_path(event) %>
     </li>
   <% end %>
 </ul>
-attending events
+
+Attending events:
+<br>Past events:
 <ul>
   <% @user.attended_events.each do |event| %>
-    <li>
-      <%= link_to event.description , event_path(event) %>
-    </li>
+    <% if event.date < Date.today %>
+      <li>
+        <%= link_to event.description, event_path(event) %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
-<%= link_to "event index", events_path %>
+
+Future events:
+<ul>
+  <% @user.attended_events.each do |event| %>
+    <% if event.date > Date.today %>
+      <li>
+        <%= link_to event.description, event_path(event) %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= link_to "Event index", events_path %>

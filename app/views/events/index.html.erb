@@ -1,9 +1,36 @@
-<%= session[:current_user_id] %>
+<br>Current session using UID:
+<%= link_to session[:current_user_id], user_path(session[:current_user_id]) %>
+<%= link_to "Log out", session_path(session[:current_user_id]), method: "delete"%>
+<br><br>
+
+All Events:
 <ul>
   <% Event.all.each do |event| %>
     <li>
+      <%= event.id %>.
       <%= link_to event.description , event_path(event) %>
     </li>
   <% end %>
 </ul>
-<%= link_to "new event", new_event_path %>
+
+Past Events:
+<ul>
+  <% @past_events.each do |event| %>
+    <li>
+      <%= event.id %>.
+      <%= link_to event.description , event_path(event) %>
+    </li>
+  <% end %>
+</ul>
+
+Upcoming Events:
+<ul>
+  <% @upcoming_events.each do |event| %>
+    <li>
+      <%= event.id %>.
+      <%= link_to event.description , event_path(event) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New event", new_event_path %>

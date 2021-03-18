@@ -1,10 +1,21 @@
-<%= session[:current_user_id] %><br>
-<%= @event.id %><br>
-<%= @event.description %><br>
-<%= @event.creator.name %><br>
-<% @event.attendees do |attendee| %>
-  <%= attendee %>
-<% end %>
+<br>Current session using UID:
+<%= link_to session[:current_user_id], user_path(session[:current_user_id]) %>
+<%= link_to "Log out", session_path, method: "delete"%>
+<br><br>
 
-<%= button_to "attend event", attendances_path(event: @event) %>
-<%= link_to "event index", events_path %>
+Event ID: <%= @event.id %><br>
+Description: <%= @event.description %><br>
+Date: <%= @event.date %><br>
+Creator: <%= @event.creator.name %><br>
+Attendees:
+<ul>
+  <% @event.attendees.each do |attendee| %>
+    <li>
+      <%= attendee.name %>
+    </li>
+  <% end %>
+</ul>
+
+
+<%= button_to "Attend event", attendances_path(event: @event) %>
+<%= link_to "Event index", events_path %>
