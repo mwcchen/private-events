@@ -2,6 +2,7 @@ Created events:
 <ul>
   <% @user.created_events.each do |event| %>
     <li>
+      #<%= event.id %>.
       <%= link_to event.description, event_path(event) %>
     </li>
   <% end %>
@@ -13,6 +14,7 @@ Attending events:
   <% @user.attended_events.each do |event| %>
     <% if event.date < Date.today %>
       <li>
+        #<%= event.id %>.
         <%= link_to event.description, event_path(event) %>
       </li>
     <% end %>
@@ -24,6 +26,7 @@ Future events:
   <% @user.attended_events.each do |event| %>
     <% if event.date > Date.today %>
       <li>
+        #<%= event.id %>.
         <%= link_to event.description, event_path(event) %>
       </li>
     <% end %>

@@ -2,7 +2,7 @@ All Events:
 <ul>
   <% Event.all.each do |event| %>
     <li>
-      <%= event.id %>.
+      #<%= event.id %>.
       <%= link_to event.description , event_path(event) %>
     </li>
   <% end %>
@@ -12,7 +12,7 @@ Past Events:
 <ul>
   <% Event.past.each do |event| %>
     <li>
-      <%= event.id %>.
+      #<%= event.id %>.
       <%= link_to event.description , event_path(event) %>
     </li>
   <% end %>
@@ -22,7 +22,7 @@ Upcoming Events:
 <ul>
   <% Event.upcoming.each do |event| %>
     <li>
-      <%= event.id %>.
+      #<%= event.id %>.
       <%= link_to event.description , event_path(event) %>
     </li>
   <% end %>

@@ -1,5 +1,7 @@
 class AttendancesController < ApplicationController
 
+  before_action :require_login
+
   def create
     @attendance = Attendance.new(attended_event_id: params[:event], attendee_id: session[:current_user_id])
 
@@ -8,7 +10,12 @@ class AttendancesController < ApplicationController
     else
       redirect_to events_path
     end
+  end
 
+  def require_login
+    if session[:current_user_id] == nil
+      redirect_to new_session_path
+    end
   end
 
 end
