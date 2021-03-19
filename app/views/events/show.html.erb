@@ -1,8 +1,3 @@
-<br>Current session using UID:
-<%= link_to session[:current_user_id], user_path(session[:current_user_id]) %>
-<%= link_to "Log out", session_path, method: "delete"%>
-<br><br>
-
 Event ID: <%= @event.id %><br>
 Description: <%= @event.description %><br>
 Date: <%= @event.date %><br>

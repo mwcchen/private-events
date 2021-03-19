@@ -21,15 +21,15 @@ class EventsController < ApplicationController
   end
 
   def index
-    @past_events = []
-    @upcoming_events = []
-    Event.all.each do |event|
-      if event.date < Date.today
-        @past_events << event
-      else
-        @upcoming_events << event
-      end
-    end
+    # @past_events = []
+    # @upcoming_events = []
+    # Event.all.each do |event|
+    #   if event.date < Date.today
+    #     @past_events << event
+    #   else
+    #     @upcoming_events << event
+    #   end
+    # end
   end
 
   def require_login
